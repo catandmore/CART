@@ -8,10 +8,11 @@ def learn(database):
 	gini = 1
 	for i in xrange(len(database[0])-1):
 		for group in database:
-			result = split(i,group[i],database)
-			m_gini = gini_index(result)
+			L_R = split(i,group[i],database)
+			m_gini = gini_index(L_R)
 			if m_gini < gini:
 				gini = m_gini
 				index = i
 				value = group[i]
-	print 'gini=%d index=%d value=%d'%(gini,index,value)
+				groups = L_R
+	return {'index' :index,'value':value,'groups':groups}
